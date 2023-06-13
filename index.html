@@ -1,387 +1,466 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Visor ZMVM</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-    crossorigin=""/>
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
     <link rel="stylesheet" type="text/css" href="style/style.css">
 
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-    crossorigin=""></script>
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <script src="capas/salud2.js"></script>
-<!-- Agrega el CSS de Leaflet.markercluster -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" />
+    <!-- Agrega el CSS de Leaflet.markercluster -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" />
 
-<!-- Agrega Leaflet y Leaflet.markercluster JS -->
-<script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+    <!-- Agrega Leaflet y Leaflet.markercluster JS -->
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+  <!-- Boxiocns CDN Link -->
 
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-    #map { height: 1080px; }
-    body {
-    padding: 0;
-    margin: 0;
-    }
-    html, body, #map {
-    height: 100%;
-    width: 100vw;
-    }   
-    .info {
-    padding: 6px 8px;
-    font: 14px/16px Arial, Helvetica, sans-serif;
-    background: white;
-    background: rgba(105,28,50,0.8);
-    color:#DDc9A3;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 5px;
-    }
-    .info h4 {
-        font: 14px/16px Arial, Helvetica, sans-serif;
-        margin: 0 0 5px;
-        color: white;
-        font-weight: bold;
-    }
-    .info h5 {
-        font: 14px/16px Arial, Helvetica, sans-serif;
-        margin: 0 0 5px;
-        color: black;
-        font-weight: bold;
-    }
-    .legend {
-    line-height: 18px;
-    background: rgba(255,255,255,0.7);
-    color: black;
-}
-.legend i {
-    width: 18px;
-    height: 18px;
-    float: left;
-    margin-right: 8px;
-    opacity: 0.7;
-}
-.popup {
-  background-color: #691c32;
-  color: #fff;
-  font-size: 14px;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.popup__title {
-  margin-top: 0;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.popup__text {
-  margin: 5px 0;
-}
-    </style>
 </head>
+
 <body>
-    <div id="map"></div>
+
+    <div class="sidebar close">
+        <div class="logo-details">
+            <div id="logo"><img src="img/icono.png" alt="covid vacunación "></div>
+            <span class="logo_name"><img src="img/Logotipo4.png" alt="covid vacunación "></span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="#">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Category</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class='bx bx-collection'></i>
+                        <span class="link_name">Category</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Category</a></li>
+                    <li><a href="#">HTML & CSS</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                    <li><a href="#">PHP & MySQL</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class='bx bx-book-alt'></i>
+                        <span class="link_name">Posts</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Posts</a></li>
+                    <li><a href="#">Web Design</a></li>
+                    <li><a href="#">Login Form</a></li>
+                    <li><a href="#">Card Design</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="link_name">Analytics</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Analytics</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-line-chart'></i>
+                    <span class="link_name">Chart</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Chart</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class='bx bx-plug'></i>
+                        <span class="link_name">Plugins</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Plugins</a></li>
+                    <li><a href="#">UI Face</a></li>
+                    <li><a href="#">Pigments</a></li>
+                    <li><a href="#">Box Icons</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-compass'></i>
+                    <span class="link_name">Explore</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Explore</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-history'></i>
+                    <span class="link_name">History</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">History</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Setting</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Setting</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="img/icon/urbano.png" alt="profileImg">
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name">Prem Shahi</div>
+                        <div class="job">Web Desginer</div>
+                    </div>
+                    <i class='bx bx-log-out'></i>
+                </div>
+            </li>
+        </ul>
+    </div>
     
+    
+    <section class="home-section">
+        <div id="map"></div>
+    </section>
+
+
+
+
+    
+
     <script>
-        
-        
-    //Mapa inicial donde se carga toda la info
-    var map = L.map('map').setView([19.4791, -98.9621,], 8.5);
-
-  //Mapa Base
-  var osm= L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-	maxZoom: 19,
-	attribution: ''
-}).addTo(map);
-    
-    var sat=L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-    maxZoom: 20,
-    subdomains:['mt0','mt1','mt2','mt3']
-});
-    var terr=L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
-    maxZoom: 20,
-    subdomains:['mt0','mt1','mt2','mt3']
-});
-
-var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-	maxZoom: 17,
-    subdomains:['mt0','mt1','mt2','mt3'],
-	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-});
-
-    //Marca de Agua CEREBRO
-L.Control.Watermark = L.Control.extend({
-    onAdd: function(map) {
-        var img = L.DomUtil.create('img');
-
-        img.src = 'img/sigeh_centro.png';
-        img.style.width = '400px';
-
-        return img;
-    },
-
-    onRemove: function(map) {
-        // Nothing to do here
-    }
-});
-
-L.control.watermark = function(opts) {
-    return new L.Control.Watermark(opts);
-}
-
-L.control.watermark({ position: 'topleft' }).addTo(map);
 
 
+        //Mapa inicial donde se carga toda la info
+        var map = L.map('map').setView([20.10098247183455, -98.75941372065762,], 10.5);
 
+        //Mapa Base
+        var osm = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: ''
+        }).addTo(map);
 
-    //Funciones para coropletas
-    //color Poblacion total
-    function getColor(d) {
-    return d > 1835486  ? '#E31A1C' :
-           d > 550567  ? '#FC4E2A' :
-           d > 391731   ? '#FD8D3C' :
-           d > 153677   ? '#FEB24C' :
-           d > 31899   ? '#FED976' :
-                      '#FFEDA0';
-}
-//Color sin pob_s_d
-    function getColor2(d) {
-    return d > 75227  ? '#253494' :
-           d > 37186  ? '#2c7fb8' :
-           d > 17958   ? '#41b6c4' :
-           d > 7674   ? '#7fcdbb' :
-           d > 532   ? '#c7e9b4' :
-                      '#ffffcc';
-}
-//Color %fisic
-function getColor3(d) {
-    return d > 751506 ? '#810f7c' :
-           d > 204148 ? '#8856a7' :
-           d > 96956  ? '#8c96c6' :
-           d > 26670   ? '#b3cde3' :
-           d > 4918   ? '#edf8fb' :
-           d > 938   ? '#e5e9ea' :
-                      '#ffffcc';
-}
-//Color %discapacidad visual
-function getColor4(d) {
-    return d > 5.63 ? '#980043' :
-           d > 4.44 ? '#dd1c77' :
-           d > 3.47  ? '#df65b0' :
-           d > 2.81   ? '#d7b5d8' :
-           d > 2.24   ? '#f1eef6' :
-           d > 1.43   ? '#e5e9ea' :
-                      '#ffffcc';
-}
-//Color %discapacidad habla
-function getColor5(d) {
-    return d > 1.5 ? '#bd0026' :
-           d > 1.13 ? '#f03b20' :
-           d > 0.99  ? '#fd8d3c' :
-           d > 0.82   ? '#fecc5c' :
-           d > 0.64   ? '#ffffb2' :
-           d > 0.53   ? '#ffffeb' :
-                      '#ffffcc';
-}
-//Color %disc_auditiva
-function getColor6(d) {
-    return d > 3.52  ? '#253494' :
-           d > 2.85  ? '#2c7fb8' :
-           d > 2.18   ? '#41b6c4' :
-           d > 1.63   ? '#7fcdbb' :
-           d > 1.18   ? '#c7e9b4' :
-                      '#ffffcc';
-}
-//Color %disc_mental
-function getColor7(d) {
-    return d > 2.45  ? '#08306b' :
-           d > 1.94  ? '#2979b9' :
-           d > 1.46   ? '#73b2d8' :
-           d > 1.27   ? '#c8dcf0' :
-           d > 1.07   ? '#f7fbff' :
-                      '#ffffff';
-}
+        var sat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+        });
+        var terr = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+        });
 
-//estilo poblacion total
-function style(feature) {
-    return {
-        fillColor: getColor(feature.properties.POBTOT), // Cambiar a cualquier color que desees
-        fillOpacity: 0.8, // Cambiar la opacidad del relleno
-        color: '#235b4e', // Cambiar el color del borde
-        weight: 1, // Cambiar el grosor del borde
-    };
-}
-function styleh(feature) {
-    return {
-        fillColor: '#ddc9a3', // Cambiar a cualquier color que desees
-        fillOpacity: 0.2, // Cambiar la opacidad del relleno
-        color: '#235b4e', // Cambiar el color del borde
-        weight: 1, // Cambiar el grosor del borde
-    };
-}
-function style_urb(feature) {
-    return {
-        fillColor: 'purple', // Cambiar a cualquier color que desees
-        fillOpacity: 0.8, // Cambiar la opacidad del relleno
-        color: 'white', // Cambiar el color del borde
-        weight: 0.4, // Cambiar el grosor del borde
-    };
-}
-function style_rur(feature) {
-    return {
-        fillColor: 'pink', // Cambiar a cualquier color que desees
-        fillOpacity: 0.8, // Cambiar la opacidad del relleno
-        color: 'black', // Cambiar el color del borde
-        weight: 0.4, // Cambiar el grosor del borde
-    };
-}
-//estilo sin derechohabiencia
-function style2(feature) {
-    return {
-        fillColor: getColor2(feature.properties.POB), // Cambiar a cualquier color que desees
-        fillOpacity: 0.8, // Cambiar la opacidad del relleno
-        color: '#235b4e', // Cambiar el color del borde
-        weight: 1, // Cambiar el grosor del borde
-    };
-}
-//estilo %discapacidad fisica
-function style3(feature) {
-    return {
-        fillColor: getColor3(feature.properties.PNACOE), // Cambiar a cualquier color que desees
-        fillOpacity: 0.8, // Cambiar la opacidad del relleno
-        color: '#235b4e', // Cambiar el color del borde
-        weight: 1, // Cambiar el grosor del borde
-    };
-}
-//estilo %discapacidad visual
-function style4(feature) {
-    return {
-        fillColor: getColor4(feature.properties.PORC_VISUAL), // Cambiar a cualquier color que desees
-        fillOpacity: 0.8, // Cambiar la opacidad del relleno
-        color: '#235b4e', // Cambiar el color del borde
-        weight: 1, // Cambiar el grosor del borde
-    };
-}
-//estilo %discapacidad habla
-function style5(feature) {
-    return {
-        fillColor: getColor5(feature.properties.PORC_HABLA), // Cambiar a cualquier color que desees
-        fillOpacity: 0.8, // Cambiar la opacidad del relleno
-        color: '#235b4e', // Cambiar el color del borde
-        weight: 1, // Cambiar el grosor del borde
-    };
-}
-//estilo %discapacidad habla
-function style6(feature) {
-    return {
-        fillColor: getColor6(feature.properties.PORC_AUDITIVA), // Cambiar a cualquier color que desees
-        fillOpacity: 0.8, // Cambiar la opacidad del relleno
-        color: '#235b4e', // Cambiar el color del borde
-        weight: 1, // Cambiar el grosor del borde
-    };
-}
-//estilo %discapacidad mental
-function style7(feature) {
-    return {
-        fillColor: getColor7(feature.properties.PORC_MENTAL), // Cambiar a cualquier color que desees
-        fillOpacity: 0.8, // Cambiar la opacidad del relleno
-        color: '#235b4e', // Cambiar el color del borde
-        weight: 1, // Cambiar el grosor del borde
-    };
-}
+        var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+            maxZoom: 17,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+            attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+        });
 
+        //Marca de Agua
+        L.Control.Watermark = L.Control.extend({
+            onAdd: function (map) {
+                var img = L.DomUtil.create('img');
 
-//EVENTO PARA RESALTAR CON HOVER Y REGRESAR AL ESTILO PRINCIPAL CUANDO SE QUITA EL HOVER
-function highlightFeature(e) {
-    var layer = e.target;
+                // img.src = 'img/sigeh_centro.png';
+                // img.style.width = '400px';
 
-    layer.setStyle({
-        weight: 3,
-        color: 'white',
-        dashArray: '',
-        fillOpacity: 0.7
-    });
+                return img;
+            },
 
-    
-    info.update(layer.feature.properties);
-}
+            onRemove: function (map) {
+                // Nothing to do here
+            }
+        });
 
-function resetHighlight(e) {
-    var layer = e.target;
-    var style = layer.options.style(layer.feature);
+        L.control.watermark = function (opts) {
+            return new L.Control.Watermark(opts);
+        }
 
-    layer.setStyle(style);
-    info.update();
-}
-
-function zoomToFeature(e) {
-    map.fitBounds(e.target.getBounds());
-}
-function onEachFeature(feature, layer) {
-    layer.on({
-        mouseover: highlightFeature,
-        mouseout: resetHighlight,
-        click: zoomToFeature
-    });
-}
-
-//SECCIÓN CAPAS
-//Capa geojson población
-poblacion=L.geoJson(zmvms, {
-    style: style,
-    onEachFeature:onEachFeature
-}).addTo(map);
+        L.control.watermark({ position: 'topleft' }).addTo(map);
 
 
 
-//Capa % sin derechohabiencia
-poblacion_s_d=L.geoJson(salud, {
-    style: styleh,
-    onEachFeature: onEachFeature}).addTo(map);
 
-//Capa % discapacidad física
-porc_disc_fisic=L.geoJson(zmvms, {
-    style: style3,
-    onEachFeature: onEachFeature});   
+        //Funciones para coropletas
+        //color Poblacion total
+        function getColor(d) {
+            return d > 1835486 ? '#E31A1C' :
+                d > 550567 ? '#FC4E2A' :
+                    d > 391731 ? '#FD8D3C' :
+                        d > 153677 ? '#FEB24C' :
+                            d > 31899 ? '#FED976' :
+                                '#FFEDA0';
+        }
+        //Color sin pob_s_d
+        function getColor2(d) {
+            return d > 75227 ? '#253494' :
+                d > 37186 ? '#2c7fb8' :
+                    d > 17958 ? '#41b6c4' :
+                        d > 7674 ? '#7fcdbb' :
+                            d > 532 ? '#c7e9b4' :
+                                '#ffffcc';
+        }
+        //Color %fisic
+        function getColor3(d) {
+            return d > 751506 ? '#810f7c' :
+                d > 204148 ? '#8856a7' :
+                    d > 96956 ? '#8c96c6' :
+                        d > 26670 ? '#b3cde3' :
+                            d > 4918 ? '#edf8fb' :
+                                d > 938 ? '#e5e9ea' :
+                                    '#ffffcc';
+        }
+        //Color %discapacidad visual
+        function getColor4(d) {
+            return d > 5.63 ? '#980043' :
+                d > 4.44 ? '#dd1c77' :
+                    d > 3.47 ? '#df65b0' :
+                        d > 2.81 ? '#d7b5d8' :
+                            d > 2.24 ? '#f1eef6' :
+                                d > 1.43 ? '#e5e9ea' :
+                                    '#ffffcc';
+        }
+        //Color %discapacidad habla
+        function getColor5(d) {
+            return d > 1.5 ? '#bd0026' :
+                d > 1.13 ? '#f03b20' :
+                    d > 0.99 ? '#fd8d3c' :
+                        d > 0.82 ? '#fecc5c' :
+                            d > 0.64 ? '#ffffb2' :
+                                d > 0.53 ? '#ffffeb' :
+                                    '#ffffcc';
+        }
+        //Color %disc_auditiva
+        function getColor6(d) {
+            return d > 3.52 ? '#253494' :
+                d > 2.85 ? '#2c7fb8' :
+                    d > 2.18 ? '#41b6c4' :
+                        d > 1.63 ? '#7fcdbb' :
+                            d > 1.18 ? '#c7e9b4' :
+                                '#ffffcc';
+        }
+        //Color %disc_mental
+        function getColor7(d) {
+            return d > 2.45 ? '#08306b' :
+                d > 1.94 ? '#2979b9' :
+                    d > 1.46 ? '#73b2d8' :
+                        d > 1.27 ? '#c8dcf0' :
+                            d > 1.07 ? '#f7fbff' :
+                                '#ffffff';
+        }
 
- //Capa % discapacidad visual
-porc_disc_visual=L.geoJson(rurales, {
-    style: style_rur,
-    onEachFeature: onEachFeature});  
+        //estilo poblacion total
+        function style(feature) {
+            return {
+                fillColor: getColor(feature.properties.POBTOT), // Cambiar a cualquier color que desees
+                fillOpacity: 0.8, // Cambiar la opacidad del relleno
+                color: '#235b4e', // Cambiar el color del borde
+                weight: 1, // Cambiar el grosor del borde
+            };
+        }
+        function styleh(feature) {
+            return {
+                fillColor: '#ddc9a3', // Cambiar a cualquier color que desees
+                fillOpacity: 0.2, // Cambiar la opacidad del relleno
+                color: '#235b4e', // Cambiar el color del borde
+                weight: 1, // Cambiar el grosor del borde
+            };
+        }
+        function style_urb(feature) {
+            return {
+                fillColor: 'purple', // Cambiar a cualquier color que desees
+                fillOpacity: 0.8, // Cambiar la opacidad del relleno
+                color: 'white', // Cambiar el color del borde
+                weight: 0.4, // Cambiar el grosor del borde
+            };
+        }
+        function style_rur(feature) {
+            return {
+                fillColor: 'pink', // Cambiar a cualquier color que desees
+                fillOpacity: 0.8, // Cambiar la opacidad del relleno
+                color: 'black', // Cambiar el color del borde
+                weight: 0.4, // Cambiar el grosor del borde
+            };
+        }
+        //estilo sin derechohabiencia
+        function style2(feature) {
+            return {
+                fillColor: getColor2(feature.properties.POB), // Cambiar a cualquier color que desees
+                fillOpacity: 0.8, // Cambiar la opacidad del relleno
+                color: '#235b4e', // Cambiar el color del borde
+                weight: 1, // Cambiar el grosor del borde
+            };
+        }
+        //estilo %discapacidad fisica
+        function style3(feature) {
+            return {
+                fillColor: getColor3(feature.properties.PNACOE), // Cambiar a cualquier color que desees
+                fillOpacity: 0.8, // Cambiar la opacidad del relleno
+                color: '#235b4e', // Cambiar el color del borde
+                weight: 1, // Cambiar el grosor del borde
+            };
+        }
+        //estilo %discapacidad visual
+        function style4(feature) {
+            return {
+                fillColor: getColor4(feature.properties.PORC_VISUAL), // Cambiar a cualquier color que desees
+                fillOpacity: 0.8, // Cambiar la opacidad del relleno
+                color: '#235b4e', // Cambiar el color del borde
+                weight: 1, // Cambiar el grosor del borde
+            };
+        }
+        //estilo %discapacidad habla
+        function style5(feature) {
+            return {
+                fillColor: getColor5(feature.properties.PORC_HABLA), // Cambiar a cualquier color que desees
+                fillOpacity: 0.8, // Cambiar la opacidad del relleno
+                color: '#235b4e', // Cambiar el color del borde
+                weight: 1, // Cambiar el grosor del borde
+            };
+        }
+        //estilo %discapacidad habla
+        function style6(feature) {
+            return {
+                fillColor: getColor6(feature.properties.PORC_AUDITIVA), // Cambiar a cualquier color que desees
+                fillOpacity: 0.8, // Cambiar la opacidad del relleno
+                color: '#235b4e', // Cambiar el color del borde
+                weight: 1, // Cambiar el grosor del borde
+            };
+        }
+        //estilo %discapacidad mental
+        function style7(feature) {
+            return {
+                fillColor: getColor7(feature.properties.PORC_MENTAL), // Cambiar a cualquier color que desees
+                fillOpacity: 0.8, // Cambiar la opacidad del relleno
+                color: '#235b4e', // Cambiar el color del borde
+                weight: 1, // Cambiar el grosor del borde
+            };
+        }
 
-//Capa % discapacidad habla
-porc_disc_habla=L.geoJson(urbanas, {
-    style: style_urb,
-    onEachFeature: onEachFeature}); 
-//Capa % discapacidad auditiva
-porc_disc_auditiva=L.geoJson(salud, {
-    style: style6,
-    onEachFeature: onEachFeature});  
-//Capa % discapacidad auditiva
-porc_disc_mental=L.geoJson(salud, {
-    style: style7,
-    onEachFeature: onEachFeature}); 
 
-//Capa de Establecimientos de Salud (CLUES)
+        //EVENTO PARA RESALTAR CON HOVER Y REGRESAR AL ESTILO PRINCIPAL CUANDO SE QUITA EL HOVER
+        function highlightFeature(e) {
+            var layer = e.target;
 
-var markers = L.markerClusterGroup();
+            layer.setStyle({
+                weight: 3,
+                color: 'white',
+                dashArray: '',
+                fillOpacity: 0.7
+            });
 
-for (var i = 0; i < clues.features.length; i++) {
-  var clue = clues.features[i];
-  
 
-  var customIcon = L.icon({
-    iconUrl: 'img/icon/clues.png', // ruta al archivo de icono personalizado
-    iconSize: [30, 30], // tamaño del icono
-  });
+            info.update(layer.feature.properties);
+        }
 
-  var marker = L.marker([clue.properties.lat, clue.properties.long], { icon: customIcon });
-  
-  marker.bindPopup(`
+        function resetHighlight(e) {
+            var layer = e.target;
+            var style = layer.options.style(layer.feature);
+
+            layer.setStyle(style);
+            info.update();
+        }
+
+        function zoomToFeature(e) {
+            map.fitBounds(e.target.getBounds());
+        }
+        function onEachFeature(feature, layer) {
+            layer.on({
+                mouseover: highlightFeature,
+                mouseout: resetHighlight,
+                click: zoomToFeature
+            });
+        }
+
+        //SECCIÓN CAPAS
+        //Capa geojson población
+        poblacion = L.geoJson(zmvms, {
+            style: style,
+            onEachFeature: onEachFeature
+        }).addTo(map);
+
+
+
+        //Capa % sin derechohabiencia
+        poblacion_s_d = L.geoJson(salud, {
+            style: styleh,
+            onEachFeature: onEachFeature
+        }).addTo(map);
+
+        //Capa % discapacidad física
+        porc_disc_fisic = L.geoJson(zmvms, {
+            style: style3,
+            onEachFeature: onEachFeature
+        });
+
+        //Capa % discapacidad visual
+        porc_disc_visual = L.geoJson(rurales, {
+            style: style_rur,
+            onEachFeature: onEachFeature
+        });
+
+        //Capa % discapacidad habla
+        porc_disc_habla = L.geoJson(urbanas, {
+            style: style_urb,
+            onEachFeature: onEachFeature
+        });
+        //Capa % discapacidad auditiva
+        porc_disc_auditiva = L.geoJson(salud, {
+            style: style6,
+            onEachFeature: onEachFeature
+        });
+        //Capa % discapacidad auditiva
+        porc_disc_mental = L.geoJson(salud, {
+            style: style7,
+            onEachFeature: onEachFeature
+        });
+
+        //Capa de Establecimientos de Salud (CLUES)
+
+        var markers = L.markerClusterGroup();
+
+        for (var i = 0; i < clues.features.length; i++) {
+            var clue = clues.features[i];
+
+
+            var customIcon = L.icon({
+                iconUrl: 'img/icon/clues.png', // ruta al archivo de icono personalizado
+                iconSize: [30, 30], // tamaño del icono
+            });
+
+            var marker = L.marker([clue.properties.lat, clue.properties.long], { icon: customIcon });
+
+            marker.bindPopup(`
   <div class="popup">
     <h3 class="popup__title">${clue.properties["NOMBRE DE LA INSTITUCION"]}</h3>
     <p class="popup__text"><b>Municipio:</b> ${clue.properties["NOMBRE DEL MUNICIPIO"]}</p>
@@ -391,27 +470,27 @@ for (var i = 0; i < clues.features.length; i++) {
   </div>
 `);
 
-  markers.addLayer(marker);
-}
+            markers.addLayer(marker);
+        }
 
-//map.addLayer(markers);
+        //map.addLayer(markers);
 
-//Markers de Antirrabicos
+        //Markers de Antirrabicos
 
-var markers1 = L.markerClusterGroup();
+        var markers1 = L.markerClusterGroup();
 
-for (var i = 0; i < antirra.features.length; i++) {
-  var antirrabico = antirra.features[i];
-  
+        for (var i = 0; i < antirra.features.length; i++) {
+            var antirrabico = antirra.features[i];
 
-  var customIcon = L.icon({
-    iconUrl: 'img/icon/pet.png', // ruta al archivo de icono personalizado
-    iconSize: [30, 30], // tamaño del icono
-  });
 
-  var marker1 = L.marker([antirrabico.properties.lat, antirrabico.properties.long], { icon: customIcon });
-  
-  marker1.bindPopup(`
+            var customIcon = L.icon({
+                iconUrl: 'img/icon/pet.png', // ruta al archivo de icono personalizado
+                iconSize: [30, 30], // tamaño del icono
+            });
+
+            var marker1 = L.marker([antirrabico.properties.lat, antirrabico.properties.long], { icon: customIcon });
+
+            marker1.bindPopup(`
   <div class="popup">
     <h3 class="popup__title">${antirrabico.properties["NOMBRE DE LA INSTITUCION"]}</h3>
     <p class="popup__text"><b>Municipio:</b> ${antirrabico.properties["NOMBRE DEL MUNICIPIO"]}</p>
@@ -421,26 +500,26 @@ for (var i = 0; i < antirra.features.length; i++) {
   </div>
 `);
 
-  markers1.addLayer(marker1);
-}
+            markers1.addLayer(marker1);
+        }
 
 
-//Markers de Brigadas
+        //Markers de Brigadas
 
-var markers2 = L.markerClusterGroup();
+        var markers2 = L.markerClusterGroup();
 
-for (var i = 0; i < brigadas.features.length; i++) {
-  var brigada = brigadas.features[i];
-  
+        for (var i = 0; i < brigadas.features.length; i++) {
+            var brigada = brigadas.features[i];
 
-  var customIcon = L.icon({
-    iconUrl: 'img/icon/brigada.png', // ruta al archivo de icono personalizado
-    iconSize: [30, 30], // tamaño del icono
-  });
 
-  var marker2 = L.marker([brigada.properties.lat, brigada.properties.long], { icon: customIcon });
-  
-  marker2.bindPopup(`
+            var customIcon = L.icon({
+                iconUrl: 'img/icon/brigada.png', // ruta al archivo de icono personalizado
+                iconSize: [30, 30], // tamaño del icono
+            });
+
+            var marker2 = L.marker([brigada.properties.lat, brigada.properties.long], { icon: customIcon });
+
+            marker2.bindPopup(`
   <div class="popup">
     <h3 class="popup__title">${brigada.properties["NOMBRE DE LA INSTITUCION"]}</h3>
     <p class="popup__text"><b>Municipio:</b> ${brigada.properties["NOMBRE DEL MUNICIPIO"]}</p>
@@ -450,25 +529,25 @@ for (var i = 0; i < brigadas.features.length; i++) {
   </div>
 `);
 
-  markers2.addLayer(marker2);
-}
+            markers2.addLayer(marker2);
+        }
 
-//Markers de Centro estatal de transfución
+        //Markers de Centro estatal de transfución
 
-var markers3 = L.markerClusterGroup();
+        var markers3 = L.markerClusterGroup();
 
-for (var i = 0; i < sangres.features.length; i++) {
-  var sangre = sangres.features[i];
-  
+        for (var i = 0; i < sangres.features.length; i++) {
+            var sangre = sangres.features[i];
 
-  var customIcon = L.icon({
-    iconUrl: 'img/icon/sangre.png', // ruta al archivo de icono personalizado
-    iconSize: [35, 35], // tamaño del icono
-  });
 
-  var marker3 = L.marker([sangre.properties.lat, sangre.properties.long], { icon: customIcon });
-  
-  marker3.bindPopup(`
+            var customIcon = L.icon({
+                iconUrl: 'img/icon/sangre.png', // ruta al archivo de icono personalizado
+                iconSize: [35, 35], // tamaño del icono
+            });
+
+            var marker3 = L.marker([sangre.properties.lat, sangre.properties.long], { icon: customIcon });
+
+            marker3.bindPopup(`
   <div class="popup">
     <h3 class="popup__title">${sangre.properties["NOMBRE DE LA INSTITUCION"]}</h3>
     <p class="popup__text"><b>Municipio:</b> ${sangre.properties["NOMBRE DEL MUNICIPIO"]}</p>
@@ -478,25 +557,25 @@ for (var i = 0; i < sangres.features.length; i++) {
   </div>
 `);
 
-  markers3.addLayer(marker3);
-}
+            markers3.addLayer(marker3);
+        }
 
-//Markers de Clínicas
+        //Markers de Clínicas
 
-var markers4 = L.markerClusterGroup();
+        var markers4 = L.markerClusterGroup();
 
-for (var i = 0; i < clinicas.features.length; i++) {
-  var clinica = clinicas.features[i];
-  
+        for (var i = 0; i < clinicas.features.length; i++) {
+            var clinica = clinicas.features[i];
 
-  var customIcon = L.icon({
-    iconUrl: 'img/icon/clues.png', // ruta al archivo de icono personalizado
-    iconSize: [30, 30], // tamaño del icono
-  });
 
-  var marker4 = L.marker([clinica.properties.lat, clinica.properties.long], { icon: customIcon });
-  
-  marker4.bindPopup(`
+            var customIcon = L.icon({
+                iconUrl: 'img/icon/clues.png', // ruta al archivo de icono personalizado
+                iconSize: [30, 30], // tamaño del icono
+            });
+
+            var marker4 = L.marker([clinica.properties.lat, clinica.properties.long], { icon: customIcon });
+
+            marker4.bindPopup(`
   <div class="popup">
     <h3 class="popup__title">${clinica.properties["NOMBRE DE LA INSTITUCION"]}</h3>
     <p class="popup__text"><b>Municipio:</b> ${clinica.properties["NOMBRE DEL MUNICIPIO"]}</p>
@@ -506,25 +585,25 @@ for (var i = 0; i < clinicas.features.length; i++) {
   </div>
 `);
 
-  markers4.addLayer(marker4);
-}
+            markers4.addLayer(marker4);
+        }
 
-//Markers de consultorios de farmacias
+        //Markers de consultorios de farmacias
 
-var markers5 = L.markerClusterGroup();
+        var markers5 = L.markerClusterGroup();
 
-for (var i = 0; i < farmacias.features.length; i++) {
-  var farmacia = farmacias.features[i];
-  
+        for (var i = 0; i < farmacias.features.length; i++) {
+            var farmacia = farmacias.features[i];
 
-  var customIcon = L.icon({
-    iconUrl: 'img/icon/farmacia.png', // ruta al archivo de icono personalizado
-    iconSize: [30, 30], // tamaño del icono
-  });
 
-  var marker5 = L.marker([farmacia.properties.lat, farmacia.properties.long], { icon: customIcon });
-  
-  marker5.bindPopup(`
+            var customIcon = L.icon({
+                iconUrl: 'img/icon/farmacia.png', // ruta al archivo de icono personalizado
+                iconSize: [30, 30], // tamaño del icono
+            });
+
+            var marker5 = L.marker([farmacia.properties.lat, farmacia.properties.long], { icon: customIcon });
+
+            marker5.bindPopup(`
   <div class="popup">
     <h3 class="popup__title">${farmacia.properties["NOMBRE DE LA INSTITUCION"]}</h3>
     <p class="popup__text"><b>Municipio:</b> ${farmacia.properties["NOMBRE DEL MUNICIPIO"]}</p>
@@ -534,25 +613,25 @@ for (var i = 0; i < farmacias.features.length; i++) {
   </div>
 `);
 
-  markers5.addLayer(marker5);
-}
+            markers5.addLayer(marker5);
+        }
 
-//Markers de hospitales
+        //Markers de hospitales
 
-var markers6 = L.markerClusterGroup();
+        var markers6 = L.markerClusterGroup();
 
-for (var i = 0; i < hospitales.features.length; i++) {
-  var hospital = hospitales.features[i];
-  
+        for (var i = 0; i < hospitales.features.length; i++) {
+            var hospital = hospitales.features[i];
 
-  var customIcon = L.icon({
-    iconUrl: 'img/icon/hospital.png', // ruta al archivo de icono personalizado
-    iconSize: [30, 30], // tamaño del icono
-  });
 
-  var marker6 = L.marker([hospital.properties.lat, hospital.properties.long], { icon: customIcon });
-  
-  marker6.bindPopup(`
+            var customIcon = L.icon({
+                iconUrl: 'img/icon/hospital.png', // ruta al archivo de icono personalizado
+                iconSize: [30, 30], // tamaño del icono
+            });
+
+            var marker6 = L.marker([hospital.properties.lat, hospital.properties.long], { icon: customIcon });
+
+            marker6.bindPopup(`
   <div class="popup">
     <h3 class="popup__title">${hospital.properties["NOMBRE DE LA INSTITUCION"]}</h3>
     <p class="popup__text"><b>Municipio:</b> ${hospital.properties["NOMBRE DEL MUNICIPIO"]}</p>
@@ -562,21 +641,21 @@ for (var i = 0; i < hospitales.features.length; i++) {
   </div>
 `);
 
-  markers6.addLayer(marker6);
-}
-//Caja con información
-var info = L.control();
+            markers6.addLayer(marker6);
+        }
+        //Caja con información
+        var info = L.control();
 
-info.onAdd = function (map) {
-    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-    this.update();
-    return this._div;
-};
+        info.onAdd = function (map) {
+            this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+            this.update();
+            return this._div;
+        };
 
-// method that we will use to update the control based on feature properties passed
-info.update = function (props) {
-    this._div.innerHTML = '<img src="img/icon/location.gif" style="width: 40px;"> <h4>DATOS GENERALES SOBRE SALUD</h4><br>' + (props ?
-        `Municipio: <b>${props.NOMGEO.toUpperCase()}<br></b><br />
+        // method that we will use to update the control based on feature properties passed
+        info.update = function (props) {
+            this._div.innerHTML = '<img src="img/icon/location.gif" style="width: 40px;"> <h4>DATOS GENERALES SOBRE SALUD</h4><br>' + (props ?
+                `Municipio: <b>${props.NOMGEO.toUpperCase()}<br></b><br />
         <b>Población</b>: ${props.POBTOT} Habitantes<br>
         <b>Personas nacidas en otra entidad federativa</b>: ${props.PNACOE}<br>
         <b>Población con discapacidad</b>: ${props.PCON_DISC}<br>
@@ -584,243 +663,251 @@ info.update = function (props) {
         <b>Población de 12 años y más económicamente activa</b>: ${props.PEA/*.toFixed(2)*/}<br>
         <b>Población sin afiliación a servicios de salud</b>: ${props.PSINDER}<br>
         <b>Promedio de ocupantes en viviendas particulares habitadas</b>: ${props.PROM_OCUP}<br>`
-        : 'Selecciona algún municipio');
-};
-info.addTo(map);  
+                : 'Selecciona algún municipio');
+        };
+        info.addTo(map);
 
 
 
 
-//Sección de LEYENDAS
-// Leyenda de la capa población
-var legend = L.control({position: 'bottomright'});
-legend.onAdd = function (map) {
+        //Sección de LEYENDAS
+        // Leyenda de la capa población
+        var legend = L.control({ position: 'bottomright' });
+        legend.onAdd = function (map) {
 
-    var div = L.DomUtil.create('div', 'info legend'),
-        grades = [4862, 31899, 153677 , 391731, 550567, 1835486],
-        labels = [];
+            var div = L.DomUtil.create('div', 'info legend'),
+                grades = [4862, 31899, 153677, 391731, 550567, 1835486],
+                labels = [];
 
-    // loop through our density intervals and generate a label with a colored square for each interval
-    div.innerHTML += '<h5>Población</h5>';
+            // loop through our density intervals and generate a label with a colored square for each interval
+            div.innerHTML += '<h5>Población</h5>';
 
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : ' ');
-    }
+            for (var i = 0; i < grades.length; i++) {
+                div.innerHTML +=
+                    '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+                    grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : ' ');
+            }
 
-    return div;
-};
-
-
-
-//Leyenda pob_s_d
-var legend_pob_s_d = L.control({position: 'bottomright'});
-
-legend_pob_s_d.onAdd = function (map) {
-var div = L.DomUtil.create('div', 'info legend'),
-    grades = [0, 532, 7674, 17958, 37186, 75227],
-    labels = [];
-
-div.innerHTML += '<h5>Población sin <br>derechohabiencia</h5>';
-
-for (var i = 0; i < grades.length; i++) {
-    div.innerHTML +=
-        '<i style="background:' + getColor2(grades[i] + 1) + '"></i> ' +
-        grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : ' ');
-}
-
-return div;
-};
-
-// Leyenda % personas con discapacidad fisica
-var legend_porc_fisic = L.control({position: 'bottomright'});
-legend_porc_fisic.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend'),
-        grades = [939, 4918, 26670 , 96956, 204148, 751506],
-        labels = [];
-
-    // loop through our density intervals and generate a label with a colored square for each interval
-    div.innerHTML += '<h5>Personas nacidas en otra <br>entidad federativa</h5>';
-
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + getColor3(grades[i] + 1) + '"></i> ' +
-            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : ' ');
-    }
-
-    return div;
-};
-// Leyenda % personas con discapacidad visual
-var legend_porc_visual= L.control({position: 'bottomright'});
-legend_porc_visual.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend');
-
-    // Establecer el estilo del cuadro de leyenda
-    div.style.backgroundColor = 'rgba(255, 227, 232, 0.7)';
-    div.style.padding = '10px';
-
-    // Agregar la etiqueta "Urbanas"
-    div.innerHTML += '<h5 style="color: black;">Localidades Rurales</h5>';
-
-    return div;
-};
-
-// Leyenda % personas con discapacidad habla
-var legend_porc_habla = L.control({position: 'bottomright'});
-legend_porc_habla.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend');
-
-    // Establecer el estilo del cuadro de leyenda
-    div.style.backgroundColor = 'rgba(128, 0, 128, 0.7)';
-    div.style.padding = '10px';
-
-    // Agregar la etiqueta "Urbanas"
-    div.innerHTML += '<h5 style="color: white;">Localidades Urbanas</h5>';
-
-    return div;
-};
-
-// Leyenda % personas con discapacidad auditiva
-var legend_porc_auditiva= L.control({position: 'bottomright'});
-legend_porc_auditiva.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend'),
-        grades = [0.71, 1.18, 1.63 , 2.18, 2.85, 3.52],
-        labels = [];
-
-    // loop through our density intervals and generate a label with a colored square for each interval
-    div.innerHTML += '<h5>% de Población con <br>discapacidad auditiva</h5>';
-
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + getColor6(grades[i] + 0.1) + '"></i> ' +
-            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : ' ');
-    }
-
-    return div;
-};
-// Leyenda % personas con discapacidad mental
-var legend_porc_mental= L.control({position: 'bottomright'});
-legend_porc_mental.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend'),
-        grades = [0.73, 1.07, 1.27 , 1.46, 1.94, 2.45],
-        labels = [];
-
-    // loop through our density intervals and generate a label with a colored square for each interval
-    div.innerHTML += '<h5>% de Población con alguna<br> condición mental</h5>';
-
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + getColor7(grades[i] + 0.1) + '"></i> ' +
-            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : ' ');
-    }
-
-    return div;
-};
-
-//var disc=L.layerGroup([porc_disc_fisic, porc_disc_habla, porc_disc_visual]);
-var baseMaps = {
-    "Mapa base clásico": osm,
-    "Imágen Satelital": sat,
-    "Google maps": terr,
-};
-var baseMaps1 = {
-};
-var pobla = {
-    //"<img src='img/icon/clues.png' style='max-width: 18px;' />   Establecimientos de Salud": markers,
-    "<img src='img/icon/pob.png' style='max-width: 19px;' />    Población ZMVM": poblacion,
-    "<img src='img/icon/hidalgo.png' style='max-width: 18px;' />     Municipios de Hidalgo": poblacion_s_d,
-    "<img src='img/icon/migracion.png' style='max-width: 18px;' />  Personas nacidas en otra entidad federativa": porc_disc_fisic,
-    //"discapacidades":disc
-    
-};
-var pobla1 = {
-    //"<img src='img/icon/clues.png' style='max-width: 18px;' />   Establecimientos de Salud": markers,
-    "<img src='img/icon/casa.png' style='max-width: 18px;' />    Localidades Rurales": porc_disc_visual,
-    "<img src='img/icon/urbano.png' style='max-width: 18px;' />    Localidades Urbanas ": porc_disc_habla,
-    
-};
-
-//Se agrega un Control de capas
-var layerControl = L.control.layers(baseMaps, pobla,{collapsed: false, position: 'bottomleft'}).addTo(map);
-//Se agrega un  segundo Control de capas
-var layerControl1 = L.control.layers(baseMaps1,pobla1,{collapsed: false, position: 'bottomleft'}).addTo(map);
-// Se agrega una barra de escala
-L.control.scale({position: 'bottomright'}).addTo(map);
+            return div;
+        };
 
 
-// Agregar leyenda al mapa
-legend.addTo(map);
 
-// SECCIÓN DE CONTROL DE LEYENDA (ACTIVAR Y DESACTIVAR)
-poblacion.on('add', function () {
-    if (!map.hasLayer(legend)) {
+        //Leyenda pob_s_d
+        var legend_pob_s_d = L.control({ position: 'bottomright' });
+
+        legend_pob_s_d.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'info legend'),
+                grades = [0, 532, 7674, 17958, 37186, 75227],
+                labels = [];
+
+            div.innerHTML += '<h5>Población sin <br>derechohabiencia</h5>';
+
+            for (var i = 0; i < grades.length; i++) {
+                div.innerHTML +=
+                    '<i style="background:' + getColor2(grades[i] + 1) + '"></i> ' +
+                    grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : ' ');
+            }
+
+            return div;
+        };
+
+        // Leyenda % personas con discapacidad fisica
+        var legend_porc_fisic = L.control({ position: 'bottomright' });
+        legend_porc_fisic.onAdd = function (map) {
+
+            var div = L.DomUtil.create('div', 'info legend'),
+                grades = [939, 4918, 26670, 96956, 204148, 751506],
+                labels = [];
+
+            // loop through our density intervals and generate a label with a colored square for each interval
+            div.innerHTML += '<h5>Personas nacidas en otra <br>entidad federativa</h5>';
+
+            for (var i = 0; i < grades.length; i++) {
+                div.innerHTML +=
+                    '<i style="background:' + getColor3(grades[i] + 1) + '"></i> ' +
+                    grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : ' ');
+            }
+
+            return div;
+        };
+        // Leyenda % personas con discapacidad visual
+        var legend_porc_visual = L.control({ position: 'bottomright' });
+        legend_porc_visual.onAdd = function (map) {
+
+            var div = L.DomUtil.create('div', 'info legend');
+
+            // Establecer el estilo del cuadro de leyenda
+            div.style.backgroundColor = 'rgba(255, 227, 232, 0.7)';
+            div.style.padding = '10px';
+
+            // Agregar la etiqueta "Urbanas"
+            div.innerHTML += '<h5 style="color: black;">Localidades Rurales</h5>';
+
+            return div;
+        };
+
+        // Leyenda % personas con discapacidad habla
+        var legend_porc_habla = L.control({ position: 'bottomright' });
+        legend_porc_habla.onAdd = function (map) {
+
+            var div = L.DomUtil.create('div', 'info legend');
+
+            // Establecer el estilo del cuadro de leyenda
+            div.style.backgroundColor = 'rgba(128, 0, 128, 0.7)';
+            div.style.padding = '10px';
+
+            // Agregar la etiqueta "Urbanas"
+            div.innerHTML += '<h5 style="color: white;">Localidades Urbanas</h5>';
+
+            return div;
+        };
+
+        // Leyenda % personas con discapacidad auditiva
+        var legend_porc_auditiva = L.control({ position: 'bottomright' });
+        legend_porc_auditiva.onAdd = function (map) {
+
+            var div = L.DomUtil.create('div', 'info legend'),
+                grades = [0.71, 1.18, 1.63, 2.18, 2.85, 3.52],
+                labels = [];
+
+            // loop through our density intervals and generate a label with a colored square for each interval
+            div.innerHTML += '<h5>% de Población con <br>discapacidad auditiva</h5>';
+
+            for (var i = 0; i < grades.length; i++) {
+                div.innerHTML +=
+                    '<i style="background:' + getColor6(grades[i] + 0.1) + '"></i> ' +
+                    grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : ' ');
+            }
+
+            return div;
+        };
+        // Leyenda % personas con discapacidad mental
+        var legend_porc_mental = L.control({ position: 'bottomright' });
+        legend_porc_mental.onAdd = function (map) {
+
+            var div = L.DomUtil.create('div', 'info legend'),
+                grades = [0.73, 1.07, 1.27, 1.46, 1.94, 2.45],
+                labels = [];
+
+            // loop through our density intervals and generate a label with a colored square for each interval
+            div.innerHTML += '<h5>% de Población con alguna<br> condición mental</h5>';
+
+            for (var i = 0; i < grades.length; i++) {
+                div.innerHTML +=
+                    '<i style="background:' + getColor7(grades[i] + 0.1) + '"></i> ' +
+                    grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : ' ');
+            }
+
+            return div;
+        };
+
+        //var disc=L.layerGroup([porc_disc_fisic, porc_disc_habla, porc_disc_visual]);
+        var baseMaps = {
+            "Mapa base clásico": osm,
+            "Imágen Satelital": sat,
+            "Google maps": terr,
+        };
+        var baseMaps1 = {
+        };
+        var pobla = {
+            //"<img src='img/icon/clues.png' style='max-width: 18px;' />   Establecimientos de Salud": markers,
+            "<img src='img/icon/pob.png' style='max-width: 19px;' />    Población ZMVM": poblacion,
+            "<img src='img/icon/hidalgo.png' style='max-width: 18px;' />     Municipios de Hidalgo": poblacion_s_d,
+            "<img src='img/icon/migracion.png' style='max-width: 18px;' />  Personas nacidas en otra entidad federativa": porc_disc_fisic,
+            //"discapacidades":disc
+
+        };
+        var pobla1 = {
+            //"<img src='img/icon/clues.png' style='max-width: 18px;' />   Establecimientos de Salud": markers,
+            "<img src='img/icon/casa.png' style='max-width: 18px;' />    Localidades Rurales": porc_disc_visual,
+            "<img src='img/icon/urbano.png' style='max-width: 18px;' />    Localidades Urbanas ": porc_disc_habla,
+
+        };
+
+        //Se agrega un Control de capas
+        var layerControl = L.control.layers(baseMaps, pobla, { collapsed: false, position: 'bottomleft' }).addTo(map);
+        //Se agrega un  segundo Control de capas
+        var layerControl1 = L.control.layers(baseMaps1, pobla1, { collapsed: false, position: 'bottomleft' }).addTo(map);
+        // Se agrega una barra de escala
+        L.control.scale({ position: 'bottomright' }).addTo(map);
+
+
+        // Agregar leyenda al mapa
         legend.addTo(map);
-    }
-});
 
-poblacion.on('remove', function () {
-    map.removeControl(legend);
-});
+        // SECCIÓN DE CONTROL DE LEYENDA (ACTIVAR Y DESACTIVAR)
+        poblacion.on('add', function () {
+            if (!map.hasLayer(legend)) {
+                legend.addTo(map);
+            }
+        });
+
+        poblacion.on('remove', function () {
+            map.removeControl(legend);
+        });
 
 
-porc_disc_fisic.on('add', function () {
-    if (!map.hasLayer(legend_porc_fisic)) {
-        legend_porc_fisic.addTo(map);
-    }
-});
+        porc_disc_fisic.on('add', function () {
+            if (!map.hasLayer(legend_porc_fisic)) {
+                legend_porc_fisic.addTo(map);
+            }
+        });
 
-porc_disc_fisic.on('remove', function () {
-    map.removeControl(legend_porc_fisic);
-});
+        porc_disc_fisic.on('remove', function () {
+            map.removeControl(legend_porc_fisic);
+        });
 
-porc_disc_visual.on('add', function () {
-    if (!map.hasLayer(legend_porc_visual)) {
-        legend_porc_visual.addTo(map);
-    }
-});
+        porc_disc_visual.on('add', function () {
+            if (!map.hasLayer(legend_porc_visual)) {
+                legend_porc_visual.addTo(map);
+            }
+        });
 
-porc_disc_visual.on('remove', function () {
-    map.removeControl(legend_porc_visual);
-});
+        porc_disc_visual.on('remove', function () {
+            map.removeControl(legend_porc_visual);
+        });
 
-porc_disc_habla.on('add', function () {
-    if (!map.hasLayer(legend_porc_habla)) {
-        legend_porc_habla.addTo(map);
-    }
-});
+        porc_disc_habla.on('add', function () {
+            if (!map.hasLayer(legend_porc_habla)) {
+                legend_porc_habla.addTo(map);
+            }
+        });
 
-porc_disc_habla.on('remove', function () {
-    map.removeControl(legend_porc_habla);
-});
+        porc_disc_habla.on('remove', function () {
+            map.removeControl(legend_porc_habla);
+        });
 
-porc_disc_auditiva.on('add', function () {
-    if (!map.hasLayer(legend_porc_auditiva)) {
-        legend_porc_auditiva.addTo(map);
-    }
-});
+        porc_disc_auditiva.on('add', function () {
+            if (!map.hasLayer(legend_porc_auditiva)) {
+                legend_porc_auditiva.addTo(map);
+            }
+        });
 
-porc_disc_auditiva.on('remove', function () {
-    map.removeControl(legend_porc_auditiva);
-});
+        porc_disc_auditiva.on('remove', function () {
+            map.removeControl(legend_porc_auditiva);
+        });
 
-porc_disc_mental.on('add', function () {
-    if (!map.hasLayer(legend_porc_mental)) {
-        legend_porc_mental.addTo(map);
-    }
-});
+        porc_disc_mental.on('add', function () {
+            if (!map.hasLayer(legend_porc_mental)) {
+                legend_porc_mental.addTo(map);
+            }
+        });
 
-porc_disc_mental.on('remove', function () {
-    map.removeControl(legend_porc_mental);
-});
+        porc_disc_mental.on('remove', function () {
+            map.removeControl(legend_porc_mental);
+        });
 
 
 
     </script>
+
+    <script src="js/script.js"></script>
+
+
+
+
+
 </body>
+
 </html>
